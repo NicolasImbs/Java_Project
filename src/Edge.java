@@ -4,7 +4,7 @@ public class Edge<V> {
 	private int dist;
 
 	
-	public Edge(V s, V d, int length) {
+	public Edge(V s, V d, int dist) {
 		this.source = s;
 		this.destination = d;
 		this.dist = dist;
@@ -22,6 +22,5 @@ public class Edge<V> {
 //	      return this.source;
 //	   }
 //	  }
-//	
 	
 }
