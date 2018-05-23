@@ -1,18 +1,18 @@
 
 public class Edge<V> {
 	private final V source, destination;
-	private int dist;
+	private int weight;
 
 	
-	public Edge(V s, V d, int dist) {
+	public Edge(V s, V d, int weight) {
 		this.source = s;
 		this.destination = d;
-		this.dist = dist;
+		this.weight = weight;
 	}
 	
 	public V from() {return source;}
 	public V to() {return destination;}
-	public int getDistance() {return dist;}
+	public int getWeight() {return weight;}
 	
 	
 //	public int getNeighbourIndex(int nodeIndex) {
