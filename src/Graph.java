@@ -1,21 +1,44 @@
 
-public class Graph {
+public abstract class Graph<V extends Comparable<V>> {
 
-	public int numVertices;
-	public int numEdges;
+	public int nbVertices;
+	public int nbEdges;
 	protected String[] names;
+	protected int n;
+	protected int m;
 
+
+	public Graph(int nbVertices, int nbEdges) {
+		this.n = nbVertices;
+		this.m = nbEdges;
+		
+	}
+	
+	
 	public int numberOfVertices() {
-		return numVertices;
+		return nbVertices;
 	}
 
 	public int numberOfEdges() {
-		return numEdges;
+		return nbEdges;
 	}
+	
+	public Graph() {
+		this(0,0);
+	}
+	
+	public int order() {
+		return n;
+	}
+	
+	public int size() {
+		return m;
+	}
+
 
 	@SuppressWarnings("unused")
 	public int getIndex(String vertex) {
-		for (int i = 0; i < numVertices; i++)
+		for (int i = 0; i < nbVertices; i++)
 			if (vertex.equals(names[i])) {
 				return i;
 			} else {
@@ -35,7 +58,7 @@ public class Graph {
                     return null;
             }
 
-	return Edges[source].copyIntoArray();
+	return Edge.from(source).copyIntoArray();
     }
 
 }
