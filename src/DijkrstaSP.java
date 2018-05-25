@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class DijkrstaSP {
 	boolean marque[];
@@ -23,8 +24,14 @@ public class DijkrstaSP {
 		while(totalmarque <= g.order()) {
 			int min = min(distance, marque);
 			marque[min]=true;
-			
-			
+			totalmarque++;
+			ArrayList<Integer> voisin = new ArrayList<Integer>();
+			voisin = (ArrayList<Integer>) g.getVoisin(min, g);
+			for(Integer n: voisin) {
+				if(marque[n-1]==false) {
+					
+				}
+			}
 		}
 	}
 	

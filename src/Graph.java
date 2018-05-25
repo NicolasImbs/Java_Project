@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Graph {
 
@@ -33,5 +35,15 @@ public abstract class Graph {
 	
 	public Edge[] getListEdge() {
 		return listedge;
+	}
+	
+	public List<Integer> getVoisin(int v, Graph g) {
+		List<Integer> voisin = new ArrayList<Integer>();
+		for(Edge e: g.getListEdge()) {
+			if(e.from().getId()==v) {
+				voisin.add(e.to().getId());
+			}
+		}
+		return voisin;
 	}
 }
