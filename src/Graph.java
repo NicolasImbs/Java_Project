@@ -3,7 +3,7 @@ public abstract class Graph {
 
 	public int nbVertices;
 	public int nbEdges;
-	protected String[] names;
+	
 	protected int n;
 	protected int m;
 	public Edge[] listedge;
