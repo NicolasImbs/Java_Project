@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public abstract class K_Shortest_Path<V extends Comparable<V>> {
 	
 	protected int n;

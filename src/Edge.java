@@ -1,17 +1,18 @@
 
-public class Edge<V> {
-	private final V source, destination;
+public class Edge {
+	Node source;
+	Node destination;
 	private int weight;
 
 	
-	public Edge(V s, V d, int weight) {
+	public Edge(Node s, Node d, int weight) {
 		this.source = s;
 		this.destination = d;
 		this.weight = weight;
 	}
 	
-	public V from() {return source;}
-	public V to() {return destination;}
+	public Node from() {return source;}
+	public Node to() {return destination;}
 	public int getWeight() {return weight;}
 	
 	
