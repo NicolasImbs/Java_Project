@@ -1,36 +1,25 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Graph {
+public class Graph {
 
-	public int nbVertices;
-	public int nbEdges;
-	protected String[] names;
-	protected int n;
-	protected int m;
+	protected int o;
+	protected int s;
 	public Edge[] listedge;
 
 
-	public Graph(int nbVertices, int nbEdges, Edge[] l) {
-		this.n = nbVertices;
-		this.m = nbEdges;
+	public Graph(Edge[] l, int or, int si) {
 		this.listedge = l;
-		
-	}
-	public int numberOfVertices() {
-		return nbVertices;
-	}
-
-	public int numberOfEdges() {
-		return nbEdges;
+		this.o= or;
+		this.s=si;
 	}
 	
 	public int order() {
-		return n;
+		return o;
 	}
 	
 	public int size() {
-		return m;
+		return s;
 	}
 	
 	public Edge[] getListEdge() {
@@ -45,5 +34,15 @@ public abstract class Graph {
 			}
 		}
 		return voisin;
+	}
+	
+	public int findE(int v) {
+		int a=0;
+		for(int i = 0; i<listedge.length;i++) {
+			if (listedge[i].to().getId() == v) {
+				a=i;
+			}
+		}
+		return a;
 	}
 }
