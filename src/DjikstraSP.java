@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class DjikstraSP {
 	boolean marque[];
@@ -26,6 +27,7 @@ public class DjikstraSP {
 	public void djikstraSP(Graph g, Integer s) {
 		marque = new boolean[g.order()];
 		distance = new double[g.order()];
+		Arrays.fill(distance, Double.MAX_VALUE);
 		distance[g.findN(s)] = 0.0;
 		int totalmarque=0;
 		while(totalmarque < g.order()) {
@@ -36,18 +38,23 @@ public class DjikstraSP {
 			voisin = (ArrayList<Integer>) g.getVoisin(min, g);
 			for(int i=0; i<voisin.size();i++) {
 				if(marque[voisin.get(i)]==false) {
-					double d = distance[min] + g.getListEdge()[voisin.get(i)].getWeight(); 
-					if(distance[voisin.get(i)] < d) {
-						distance[voisin.get(i)-1] = distance[voisin.get(i)];
-					}
-					else {
-						distance[voisin.get(i)-1] = d;
+					if(distance[min] != Double.MAX_VALUE) {
+						double w = 0;
+						for(Edge e: g.getListEdge()) {
+							if(g.findN(e.from().getId()) == min && g.findN(e.to().getId()) == i) {
+								w = e.getWeight();
+							}
+						}
+						if(distance[min] + w < distance[i]) {
+							distance[i] = distance[min] + w;
+						}
 					}
 				}
 			}
+			break;
 		}
 	}
-	
+
 	public  int min(double[] distance, boolean[] marque) {
 		int min=0, i=0;
 		while(i<distance.length) {
@@ -90,7 +97,7 @@ public class DjikstraSP {
 			for(int j=0; j<listN.length;j++) {
 				if(listN[j] != null) {
 					if(test[i][1] == listN[j].getId()){
-						t=1;
+						t=1; 
 					}
 				}
 			}
@@ -102,9 +109,9 @@ public class DjikstraSP {
 		DjikstraSP d = new DjikstraSP();
 		d.djikstraSP(g,0);
 		double[] dist = d.getD();
-//		for(double a: dist) {
-//			System.out.println(a);
-//		}
+		for(int i=0; i<dist.length;i++) {
+			System.out.println(g.getListNode()[i].getId() + "  " + dist[i]);
+		}
 		
 	}
 }
